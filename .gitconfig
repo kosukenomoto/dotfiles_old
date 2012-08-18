@@ -1,0 +1,7 @@
+[user]
+	name = Kosuke Nomoto
+	email = kosukenomoto@gmail.com
+[core]
+	editor = /usr/bin/vi
+[i18n]
+	logOutputEncoding = utf-8
