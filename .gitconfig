@@ -5,3 +5,5 @@
 	editor = /usr/bin/vi
 [i18n]
 	logOutputEncoding = utf-8
+[color]
+	ui = auto
