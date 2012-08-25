@@ -13,5 +13,5 @@
 #4.loginshell -> logout
 #  ~/.zlogout
 ########################################
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
