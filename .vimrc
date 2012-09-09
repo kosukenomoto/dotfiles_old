@@ -77,6 +77,8 @@ set cmdheight=2
 imap <C-@> <C-[>
 "検索時のハイライト解除
 nmap <ESC><ESC> :noh<CR><ESC>
+".vimrc再読み込み簡易化
+noremap <Space>s. :<C-u>source ~/.vimrc<Return>
 
 "vimfilerセーフモード無効化
 let g:vimfiler_safe_mode_by_default = 0
