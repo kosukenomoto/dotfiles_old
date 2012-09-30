@@ -15,4 +15,5 @@
 ########################################
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
+export PERL5LIB=
 source ~/perl5/perlbrew/etc/bashrc
