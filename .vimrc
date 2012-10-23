@@ -80,12 +80,14 @@ set showtabline=2
 set number
 "ウィンドウ幅
 set winwidth=90
-"tab挿入時には適切な数の空白を使う
-set expandtab
 "tabstop（タブ表示スペース数）
 set ts=4
+"tab挿入時には適切な数の空白を使う
+set expandtab
 "自動インデントや"<<",">>"でずれる幅"
 set sw=4
+"Always indent/outdent to the nearest tabstop
+set shiftround
 "タブやバックスペースでカーソルが動く幅
 set softtabstop=4
 "カーソルライン
@@ -317,6 +319,7 @@ nnoremap [Space]ltp :<C-u>call <SID>get_cdir_filelist('pl')<CR>
 nnoremap [Space]lth :<C-u>call <SID>get_cdir_filelist('html')<CR>
 nnoremap [Space]ltj :<C-u>call <SID>get_cdir_filelist('js')<CR>
 nnoremap [Space]ltv :<C-u>call <SID>get_cdir_filelist('vim')<CR>
+nnoremap [Space]ltc :<C-u>call <SID>get_cdir_filelist('cpp')<CR>
 "}}}
 "}}}
 
@@ -325,7 +328,8 @@ let s:codetest_working_path = {
 	\ 'pl' : '~/tests/perl',
 	\ 'html' : '~/tests/html',
 	\ 'js' : '~/tests/javascript',
-	\ 'vim' : '~/tests/vim'
+	\ 'vim' : '~/tests/vim',
+	\ 'cpp' : '~/tests/cpp'
     \ }
 function! s:get_cdir_filelist(target_lang)
 	let l:list =[]
