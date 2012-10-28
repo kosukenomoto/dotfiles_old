@@ -62,6 +62,7 @@ ps -ax|grep hogehoge
 
 >launch
 launchctl list
+imac% sudo launchctl list|grep -e '^\d'|grep mysql
 ロード済み野設定を表示 PID表示は起動済み
 ** register
 $ sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql55-server.plist
