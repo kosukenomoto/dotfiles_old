@@ -168,3 +168,26 @@ com.apple.dnbobserverd
 
 >>mysql
 /opt/local/var/db/mysql55 内にdbの実態
+
+select host,user,grant_priv from mysql.user;
+ユーザー権限の表示（grant権限があるか確認)
+
+grant all privileges on *.* to 'lrngsql'@'%' identified by 'password';
+lrngsqlユーザーの作成
+
+update mysql.user set grant_priv='Y' where user='root';
+すべてのrootアカウントにgrant_priv=Yを設定
+
+下記の設定をmy.cnfに設定（サーバークライアントどちらも）
+[mysql]
+default-character-set=utf8
+[mysqld]
+character-set-server=utf8
+
+show tables;
+drop table hogehoge;
+クエリオプティマイザ
+  命令実行権限
+  データアクセス権限
+  構文解析
+  
