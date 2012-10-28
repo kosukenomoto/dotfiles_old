@@ -312,6 +312,7 @@ nnoremap <silent> [Window]en  :<C-u>new<CR>
 ".vimrc再読み込み簡易化"{{{
 noremap [Space]rv :<C-u>source ~/.vimrc<Return>
 noremap [Space]ev :<C-u>edit ~/.vimrc<Return>
+noremap [Space]er :<C-u>edit ~/readme.txt<Return>
 "}}}
 
 "言語テストファイル作成(Language test)"{{{
