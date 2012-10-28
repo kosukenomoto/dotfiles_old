@@ -21,8 +21,8 @@ endif
 
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/neosnippet.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
@@ -31,6 +31,7 @@ NeoBundle 'git://github.com/thinca/vim-guicolorscheme.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'git://github.com/LeafCage/foldCC.git'
+NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
 filetype plugin on
 filetype indent on
