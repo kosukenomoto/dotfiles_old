@@ -22,3 +22,22 @@ zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
 
 
+#color
+#
+DEFAULT=$'%{\e[1;0m%}'
+GREEN=$'%{\e[1;32m%}'
+BLUE=$'%{\e[1;34m%}'
+local RIGHTC=$'%{\e[38;5;88m%}'
+local LEFTC=$'%{\e[38;5;30m%}'
+###
+### Prompt
+###
+setopt prompt_subst
+PROMPT='${LEFTC}%U${USER}@${HOST} ${GREEN}%~${DEFAULT}
+%(!.#.$) '
+
+#local LEFTC=$'%{\e[38;5;30m%}'
+#local RIGHTC=$'%{\e[38;5;88m%}'
+#local DEFAULTC=$'%{\e[m%}'
+#export PROMPT=$LEFTC"%U$USER%%%u "$DEFAULTC
+#export RPROMPT=$RIGHTC"[%~]"$DEFAULTC
