@@ -1,3 +1,22 @@
+>>ssh
+ssh-keygen
+ssh-keygen -t rsa
+
+~/.ssh/config
+
+Host github
+	HostName github.com
+	IdentityFile ~/.ssh/macmini_kn
+	User git
+Host macbook
+	HostName macbook.local
+	IdentityFile ~/.ssh/macmini_kn
+	User knomoto
+
+ssh github = ssh git@github.com
+ssh macbook = ssh knomoto@macbook.local
+macmini_kn.pub を ~/Dropboxに放り込んで共有すると便利
+
 >>rsync
 
 rsync -Haxv knomoto@imac.local:hogehoge/ hogehoge/
