@@ -30,6 +30,7 @@ NeoBundle 'git://github.com/thinca/vim-quickrun'
 NeoBundle 'git://github.com/thinca/vim-guicolorscheme.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
+NeoBundle 'git://github.com/vim-scripts/newspaper.vim.git'
 NeoBundle 'git://github.com/LeafCage/foldCC.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 
@@ -48,8 +49,9 @@ set directory=~/.vim
 
 "カラースキーマの設定"{{{
 syntax enable
-set background=dark
+"colorscheme newspaper
 colorscheme solarized
+"set background=dark
 let g:solarized_termcolors=256
 "let g:solarized_contrast="hight"
 "let g:solarized_visibility="low"
