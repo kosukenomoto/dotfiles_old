@@ -211,3 +211,50 @@ drop table hogehoge;
   データアクセス権限
   構文解析
   
+
+
+python install 
+
+sudo port install python27
+which python
+ /opt/local/bin/pythonを確認
+ (実態は/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python)
+curl -O python http://python-distribute.org/distribute_setup.py 
+sudo python distribute_setup.py
+ (easy_installが下に入ります
+ /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/)
+
+which easy_install
+ 通常/usr/bin/easy_installをさすので、
+ /opt/local/Library/Frameworks 以下をさすようにシンボリックリンクを下記に作成
+ln -s /opt/local/Library/Frame ~~ /opt/local/bin/easy_install-2.7
+
+sudo easy_install-2.7 virtualenv
+ easy_installと同様にシンボリックリンクを下記に作成
+ln -s /opt/local/Library/Frame ~~ /opt/local/bin/virtualenv-2.7
+
+virtualenv-2.7 --distribute --no-site-package env1
+などで環境作成
+
+まとめ
+sudo port install python27
+which python2.7
+ >/opt/local/bin/python2.7
+
+curl -O python2.7 http://python-distribute.org/distribute_setup.py
+sudo python2.7 distribute_setup.py
+cd /opt/local/bin
+ln -s /opt/local/Library/Frame~~/opt/local/bin/easy_install-2.7/easy_install-2.7 easy_install-2.7
+rehash
+
+sudo easy_install-2.7 virtualenv
+ln -s /opt/local/Library/Frame ~~ /opt/local/bin/virtualenv-2.7 virtualenv-2.7
+
+virtualenv-2.7 --distribute --no-site-package env1
+cd env1
+source bin/activate
+で環境切り替え
+
+sudo port select --list python
+sudo port select --show python
+sudo port select --set python python27
