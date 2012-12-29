@@ -82,7 +82,7 @@ set showtabline=2
 "行番号の表示
 set number
 "ウィンドウ幅
-set winwidth=90
+set winwidth=80
 "tabstop（タブ表示スペース数）
 set ts=4
 "tab挿入時には適切な数の空白を使う
