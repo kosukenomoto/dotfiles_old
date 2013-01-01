@@ -41,3 +41,5 @@ PROMPT='${LEFTC}%U${USER}@${HOST} ${GREEN}%~${DEFAULT}
 #local DEFAULTC=$'%{\e[m%}'
 #export PROMPT=$LEFTC"%U$USER%%%u "$DEFAULTC
 #export RPROMPT=$RIGHTC"[%~]"$DEFAULTC
+
+bindkey -v

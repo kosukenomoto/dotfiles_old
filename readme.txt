@@ -258,3 +258,12 @@ source bin/activate
 sudo port select --list python
 sudo port select --show python
 sudo port select --set python python27
+
+#カレントディレクを再起的にgrep
+$ grep 'python' `find . -type f`
+.
+#vim
+vimの$PATHはSHELL の$PATHとは別物だけど、起動時にSHELLの$PATHからコピーされ
+る。
+vimの$PATHはSHELL の$PATHとはべつものとおもいきや、
+$PATHへの変更は反映される。 

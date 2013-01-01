@@ -30,9 +30,10 @@ NeoBundle 'git://github.com/thinca/vim-quickrun'
 NeoBundle 'git://github.com/thinca/vim-guicolorscheme.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
-NeoBundle 'git://github.com/vim-scripts/newspaper.vim.git'
+"NeoBundle 'git://github.com/vim-scripts/newspaper.vim.git'
 NeoBundle 'git://github.com/LeafCage/foldCC.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
+NeoBundle 'git://github.com/jmcantrell/vim-virtualenv.git'
 
 filetype plugin on
 filetype indent on
@@ -320,6 +321,7 @@ noremap [Space]er :<C-u>edit ~/readme.txt<Return>
 "言語テストファイル作成(Language test)"{{{
 "cdはかえてくれないから、実行時のrequire設定などに注意すること
 nnoremap [Space]ltp :<C-u>call <SID>get_cdir_filelist('pl')<CR>
+nnoremap [Space]lty :<C-u>call <SID>get_cdir_filelist('py')<CR>
 nnoremap [Space]lth :<C-u>call <SID>get_cdir_filelist('html')<CR>
 nnoremap [Space]ltj :<C-u>call <SID>get_cdir_filelist('js')<CR>
 nnoremap [Space]ltv :<C-u>call <SID>get_cdir_filelist('vim')<CR>
@@ -333,7 +335,8 @@ let s:codetest_working_path = {
 	\ 'html' : '~/tests/html',
 	\ 'js' : '~/tests/javascript',
 	\ 'vim' : '~/tests/vim',
-	\ 'cpp' : '~/tests/cpp'
+	\ 'cpp' : '~/tests/cpp',
+	\ 'py' : '~/tests/python'
     \ }
 function! s:get_cdir_filelist(target_lang)
 	let l:list =[]
@@ -354,6 +357,10 @@ function! s:get_cdir_filelist(target_lang)
 endfunction
 "}}}
 
+"python開発環境"{{{
+let g:virtualenv_directory = '~/tests/python/'
+"}}}
+"
 "vimfiler Setting"{{{
 "vimfilerセーフモード無効化
 let g:vimfiler_safe_mode_by_default = 0
