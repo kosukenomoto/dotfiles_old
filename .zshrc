@@ -49,7 +49,7 @@ WHITE="%{${fg[white]}%}"
 # プロンプトでエスケープシーケンスを展開する
 setopt prompt_subst
 PROMPT='[%/$(git_super_status)]
-%M%# '
+%m%# '
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
 
