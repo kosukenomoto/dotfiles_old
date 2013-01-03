@@ -1,5 +1,16 @@
 #!/opt/local/bin/zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
+#=============================
+# source auto-fu.zsh
+#=============================
+if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
+    source ~/.zsh/auto-fu.zsh/auto-fu.zsh
+    function zle-line-init () {
+        auto-fu-init
+    }
+    zle -N zle-line-init
+    zstyle ':completion:*' completer _oldlist _complete
+fi
 
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
@@ -13,18 +24,6 @@ HISTSIZE=6000000
 SAVEHIST=6000000
 setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data
-
-#=============================
-# source auto-fu.zsh
-#=============================
-if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
-    source ~/.zsh/auto-fu.zsh/auto-fu.zsh
-    function zle-line-init () {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete
-fi
 
 ## Default shell configuration
 #
@@ -49,11 +48,11 @@ WHITE="%{${fg[white]}%}"
 
 # プロンプトでエスケープシーケンスを展開する
 setopt prompt_subst
-PROMPT='$(git_super_status) %# '
+PROMPT='[%/$(git_super_status)]
+%M%# '
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
 
-bindkey -v
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
@@ -82,3 +81,4 @@ setopt auto_cd
 zstyle ':completion:*' list-colors '' 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
 zstyle ':completion:*:default' menu select=1
+bindkey -v

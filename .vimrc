@@ -53,7 +53,8 @@ set directory=~/.vim
 syntax enable
 "colorscheme newspaper
 colorscheme solarized
-set background=light
+"set background=light
+set background=dark
 "let g:solarized_contrast="hight"
 "let g:solarized_visibility="low"
 "}}}
