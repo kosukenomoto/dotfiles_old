@@ -3,14 +3,14 @@ source ~/.zsh/zsh-git-prompt/zshrc.sh
 #=============================
 # source auto-fu.zsh
 #=============================
-if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
-    source ~/.zsh/auto-fu.zsh/auto-fu.zsh
-    function zle-line-init () {
-        auto-fu-init
-    }
-    zle -N zle-line-init
-    zstyle ':completion:*' completer _oldlist _complete
-fi
+#if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
+#    source ~/.zsh/auto-fu.zsh/auto-fu.zsh
+#    function zle-line-init () {
+#        auto-fu-init
+#    }
+#    zle -N zle-line-init
+#    zstyle ':completion:*' completer _oldlist _complete
+#fi
 
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
@@ -34,24 +34,6 @@ autoload -Uz colors
 colors
 autoload -U compinit
 compinit
-
-# 色の定義
-DEFAULT=$"%{\e[0;0m%}"
-RESET="%{${reset_color}%}"
-GREEN="%{${fg[green]}%}"
-BLUE="%{${fg[blue]}%}"
-RED="%{${fg[red]}%}"
-CYAN="%{${fg[cyan]}%}"
-YELLOW="%{${fg[yellow]}%}"
-MAGENTA="%{${fg[magenta]}%}"
-WHITE="%{${fg[white]}%}"
-
-# プロンプトでエスケープシーケンスを展開する
-setopt prompt_subst
-PROMPT='[%/$(git_super_status)]
-%m%# '
-PROMPT2="%_%% "
-SPROMPT="%r is correct? [n,y,a,e]: "
 
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
@@ -81,4 +63,37 @@ setopt auto_cd
 zstyle ':completion:*' list-colors '' 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 
 zstyle ':completion:*:default' menu select=1
-bindkey -v
+
+# 色の定義
+DEFAULT=$"%{\e[0;0m%}"
+RESET="%{${reset_color}%}"
+GREEN="%{${fg[green]}%}"
+BLUE="%{${fg[blue]}%}"
+RED="%{${fg[red]}%}"
+CYAN="%{${fg[cyan]}%}"
+YELLOW="%{${fg[yellow]}%}"
+MAGENTA="%{${fg[magenta]}%}"
+WHITE="%{${fg[white]}%}"
+
+# プロンプトでエスケープシーケンスを展開する
+setopt prompt_subst
+PROMPT='$WHITE [%/$RESET$(git_super_status)$WHITE]
+$WHITE%m%# '
+function zle-line-init zle-keymap-select {
+  case $KEYMAP in
+    vicmd)
+      PROMPT='$YELLOW [%/$RESET$(git_super_status)$YELLOW]
+$YELLOW%m%# '
+    ;;
+    main|viins)
+      PROMPT='$WHITE [%/$RESET$(git_super_status)$WHITE]
+$WHITE%m%# '
+    ;;
+  esac
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+PROMPT2="%_%% "
+SPROMPT="%r is correct? [n,y,a,e]: "
