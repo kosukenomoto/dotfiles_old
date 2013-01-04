@@ -1,16 +1,5 @@
 #!/opt/local/bin/zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
-#=============================
-# source auto-fu.zsh
-#=============================
-#if [ -f ~/.zsh/auto-fu.zsh/auto-fu.zsh ]; then
-#    source ~/.zsh/auto-fu.zsh/auto-fu.zsh
-#    function zle-line-init () {
-#        auto-fu-init
-#    }
-#    zle -N zle-line-init
-#    zstyle ':completion:*' completer _oldlist _complete
-#fi
 
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
@@ -97,3 +86,12 @@ zle -N zle-keymap-select
 
 PROMPT2="%_%% "
 SPROMPT="%r is correct? [n,y,a,e]: "
+
+function chpwd() { ls -a }
+function cdup() {
+    echo
+    cd ..
+    zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup
