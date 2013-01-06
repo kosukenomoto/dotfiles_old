@@ -7,3 +7,5 @@
 	logOutputEncoding = utf-8
 [color]
 	ui = auto
+[github]
+	user = kosukenomoto@gmail.com

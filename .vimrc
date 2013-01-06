@@ -35,6 +35,9 @@ NeoBundle 'git://github.com/LeafCage/foldCC.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 NeoBundle 'git://github.com/jmcantrell/vim-virtualenv.git'
 NeoBundle 'git://github.com/kana/vim-smartchr.git'
+NeoBundle 'git://github.com/mattn/gist-vim.git'
+NeoBundle 'git://github.com/mattn/webapi-vim.git'
+
 
 filetype plugin on
 filetype indent on
@@ -128,6 +131,7 @@ set noequalalways "分割時はウィンドウにサイズを合わせる
 
 "キーマップ {{{
 "
+imap <C-j> <ESC>
 ""ミスタッチ防止設定
 imap <C-@> <C-[>
 "カッコやクオートなどを入力した際に左に自動で移動します
