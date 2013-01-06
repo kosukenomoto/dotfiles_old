@@ -251,26 +251,14 @@ nnoremap <silent> [Window]c  :<C-u>call <sid>smart_close()<CR>
 nnoremap <silent> [Window]o  :<C-u>only<CR>
 
 " .vimrc snippet that allows you to move around windows beyond tabs
-nnoremap <silent> <Tab> :call <SID>NextWindow()<CR>
-nnoremap <silent> <S-Tab> :call <SID>PreviousWindowOrTab()<CR>
-
-" Unite Window
-nnoremap <silent> [Window]s
-      \ :<C-u>Unite -buffer-name=files -no-split
-      \ jump_point file_point buffer_tab file file/new file_mru<CR>
-nnoremap <silent> [Window]t
-      \ :<C-u>Unite -buffer-name=files tab<CR>
-nnoremap <silent> [Window]w
-      \ :<C-u>Unite window<CR>
-nnoremap <silent> [Space]b
-      \ :<C-u>UniteBookmarkAdd<CR>
-
 "最後のウィンドウでなければ閉じる
 function! s:smart_close()
   if winnr('$') != 1
       close
   endif
 endfunction
+nnoremap <silent> <Tab> :call <SID>NextWindow()<CR>
+nnoremap <silent> <S-Tab> :call <SID>PreviousWindowOrTab()<CR>
 
 "ウィンドウ幅が標準の二倍より多き場合のみ縦スプリット
 command! SplitNicely call s:split_nicely()
@@ -301,6 +289,27 @@ function! s:PreviousWindowOrTab()
   endif
 endfunction
 
+" Unite Window
+nnoremap <silent> [Window]s
+      \ :<C-u>Unite -buffer-name=files
+      \ buffer_tab file_mru<CR>
+nnoremap <silent> [Window]b
+      \ :<C-u>Unite -buffer-name=files
+      \ bookmark<CR>
+nnoremap <silent> [Window]f
+      \ :<C-u>Unite -buffer-name=files
+      \ jump_point file_point file file/new<CR>
+nnoremap [Space]m
+      \ :<C-u>UniteBookmarkAdd<CR>
+
+" Gist Window
+nnoremap <silent> [Window]g
+      \ :<C-u>Gist -l urinurin<CR>
+nnoremap [Space]gm
+      \ :<C-u>Gist -s ''<Left>
+vnoremap [Space]gm
+      \ :Gist -s ''<Left>
+
 " Delete current buffer."{{{
 nnoremap <silent> [Window]d  :<C-u>call <SID>CustomBufferDelete(0)<CR>
 
@@ -328,6 +337,9 @@ nnoremap <silent> [Window]en  :<C-u>new<CR>
 noremap [Space]rv :<C-u>source ~/.vimrc<Return>
 noremap [Space]ev :<C-u>edit ~/.vimrc<Return>
 noremap [Space]er :<C-u>edit ~/readme.txt<Return>
+noremap [Space]ez :<C-u>edit ~/.zshrc<Return>
+noremap [Space]et :<C-u>edit ~/.tmux.conf<Return>
+
 "}}}
 
 "言語テストファイル作成(Language test)"{{{
@@ -372,7 +384,7 @@ endfunction
 "python開発環境"{{{
 let g:virtualenv_directory = '~/tests/python/'
 "}}}
-"
+
 "vimfiler Setting"{{{
 "vimfilerセーフモード無効化
 let g:vimfiler_safe_mode_by_default = 0
