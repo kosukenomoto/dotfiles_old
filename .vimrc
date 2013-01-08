@@ -213,8 +213,8 @@ noremap [Space]gg  :<C-u>echo FoldCCnavi()<CR>
 "}}}
 
 "check registers and marks"{{{
-nnoremap <silent> [Space]mk :<C-u>marks<CR>
-nnoremap <silent> [Space]re :<C-u>registers<CR>
+"nnoremap <silent> [Space]mk :<C-u>marks<CR>
+"nnoremap <silent> [Space]re :<C-u>registers<CR>
 "}}}
 
 "}}}
@@ -299,7 +299,7 @@ nnoremap <silent> [Window]b
 nnoremap <silent> [Window]f
       \ :<C-u>Unite -buffer-name=files
       \ jump_point file_point file file/new<CR>
-nnoremap [Space]m
+nnoremap [Space]ba
       \ :<C-u>UniteBookmarkAdd<CR>
 
 " Gist Window
@@ -390,6 +390,15 @@ let g:virtualenv_directory = '~/tests/python/'
 let g:vimfiler_safe_mode_by_default = 0
 "vimfilerデフォルトファイラー設定
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_enable_clipboard = 0
+
+nnoremap <silent>   [Space]v   :<C-u>VimFiler<CR>
+nnoremap    [Space]ff   :<C-u>VimFilerExplorer<CR>
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
 "}}}
 
 " Unite vim {{{
