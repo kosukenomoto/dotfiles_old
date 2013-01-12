@@ -267,3 +267,9 @@ vimの$PATHはSHELL の$PATHとは別物だけど、起動時にSHELLの$PATHか
 る。
 vimの$PATHはSHELL の$PATHとはべつものとおもいきや、
 $PATHへの変更は反映される。 
+
+#python
+import pwd
+pwd.getpwnam('nobody')[2]
+で取得するUID,GIDがmacportインストールpythonでは-2とならない。
+なんでか。UID -2ってなに？
