@@ -1,5 +1,10 @@
 #!/opt/local/bin/zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
+export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
+if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
+        . /opt/local/etc/profile.d/autojump.sh
+fi
+
 
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
@@ -29,6 +34,8 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+
+bindkey -M viins '^j' vi-cmd-mode
 
 # コマンド履歴検索
 autoload history-search-end
@@ -95,3 +102,6 @@ function cdup() {
 }
 zle -N cdup
 bindkey '\^' cdup
+
+function p33 { source ~/tests/python/env3.3/bin/activate }
+function p27 { source ~/tests/python/env2.7/bin/activate }

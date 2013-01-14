@@ -1,99 +1,104 @@
->>ssh
-ssh-keygen
-ssh-keygen -t rsa
+#ssh
+##ssh-keygenで共通鍵作成
+    ssh-keygen -t rsa
 
-~/.ssh/config
-
+##~/.ssh/config設定
+```file
 Host github
-	HostName github.com
-	IdentityFile ~/.ssh/macmini_kn
-	User git
+    HostName github.com
+    IdentityFile ~/.ssh/macmini_kn
+    User git
 Host macbook
-	HostName macbook.local
-	IdentityFile ~/.ssh/macmini_kn
-	User knomoto
-
+    HostName macbook.local
+    IdentityFile ~/.ssh/macmini_kn
+    User username1
+```
 ssh github = ssh git@github.com
-ssh macbook = ssh knomoto@macbook.local
+ssh macbook = ssh username1@macbook.local
 macmini_kn.pub を ~/Dropboxに放り込んで共有すると便利
 
->>rsync
-
+#rsync
+```
 rsync -Haxv knomoto@imac.local:hogehoge/ hogehoge/
-rsync -Haxv hogehoge/ knomoto@macbook.local:hogehoge/
--a, --archive
-This is equivalent to -rlptgoD. It is a quick way of saying you want recursion and want to preserve almost everything (with -H being a notable omission).  The only exception to the above equivalence is when --files-from is specified, in which case -r is not implied.
-Note that -a does not preserve hardlinks, because finding multiply-linked files is expensive.  You must separately specify -H.
+```
+とか
+```
+rsync -Haxv hogehoge/ knomoto@macbook.local:hogehoge/`
+```
 
--H, --hard-links
-This tells rsync to look for hard-linked files in the transfer and link together the corresponding files on the receiving side.  Without this option, hard-linked files in the transfer are treated as though they were separate files.
-Note that rsync can only detect hard links if both parts of the link are in the list of files being sent.
+>##-a, --archive
+>This is equivalent to -rlptgoD. It is a quick way of saying you want recursion and want to preserve almost everything (with -H being a notable omission).  The only exception to the above equivalence is when --files-from is specified, in which case -r is not implied.
+>Note that -a does not preserve hardlinks, because finding multiply-linked files is expensive.  You must separately specify -H.
 
--x, --one-file-system
-This tells rsync to avoid crossing a filesystem boundary when recursing.  This does not limit the user's ability to specify items to copy from multiple filesystems, just rsync's recursion through the hierarchy of each directory that the user specified, and also the analogous recursion on the receiving side  dur-
-ing deletion.  Also keep in mind that rsync treats a "bind" mount to the same device as being on the same filesystem.
-If this option is repeated, rsync omits all mount-point directories from the copy.  Otherwise, it includes an empty directory at each mount-point it encounters (using the attributes of the mounted directory because those of the underlying mount-point directory are inaccessible).
-If rsync has been told to collapse symlinks (via --copy-links or --copy-unsafe-links), a symlink to a directory on another device is treated like a mount-point.  Symlinks to non-directories are unaffected by this option.
+>##-H, --hard-links
+>This tells rsync to look for hard-linked files in the transfer and link together the corresponding files on the receiving side.  Without this option, hard-linked files in the transfer are treated as though they were separate files.
+>Note that rsync can only detect hard links if both parts of the link are in the list of files being sent.
 
--v, --verbose
-This option increases the amount of information the daemon logs during its startup phase.  After the client connects, the daemon's verbosity level will be controlled by the options that the client used and the "max verbosity" setting in the module's config section.
+>##-x, --one-file-system
+>This tells rsync to avoid crossing a filesystem boundary when recursing.  This does not limit the user's ability to specify items to copy from multiple filesystems, just rsync's recursion through the hierarchy of each directory that the user specified, and also the analogous recursion on the receiving side  dur-
+>ing deletion.  Also keep in mind that rsync treats a "bind" mount to the same device as being on the same filesystem.
+>If this option is repeated, rsync omits all mount-point directories from the copy.  Otherwise, it includes an empty directory at each mount-point it encounters (using the attributes of the mounted directory because those of the underlying mount-point directory are inaccessible).
+>If rsync has been told to collapse symlinks (via --copy-links or --copy-unsafe-links), a symlink to a directory on another device is treated like a mount-point.  Symlinks to non-directories are unaffected by this option.
 
->>macport
-*imac start
+>##-v, --verbose
+>This option increases the amount of information the daemon logs during its startup phase.  After the client connects, the daemon's verbosity level will be controlled by the options that the client used and the "max verbosity" setting in the module's config section.
+
+#macport
+##imac start
 port search hogehoge|more
 sudo port uninstall hogehoge
 sudo port install hogehoge
 sudo port clean hogehoge
 sudo port deps hogehoge
- >依存パッケージの表示
+##依存パッケージの表示
 sudo port contents hogehoge
- >インストール済パッケージファイル表示
+##インストール済パッケージファイル表示
 sudo port variants hogehoge
-＞インストール時指定可能なオプション install時に+で指定可能
+##インストール時指定可能なオプション install時に+で指定可能
 
 /opt/local/bin/portsign.sh
 >port installにより取得した下記に署名を追加。
 >署名により他マシンでのバイナリパッケージの使用が可能になる。
 >/opt/local/var/macports/software/
 
-*macbook
+##macbook
 sudo rsync -Haxv knomoto@imac.local:/opt/local/var/macports/software/ /opt/local/var/macports/software/
 NG::rsync -Haxv knomoto@imac.local:hogehoge/ hogehoge/
 >imacでのmacbookへの転送はmacbook側のrootがssh上で必要になるのでできない。
 
-*env
+##env
 .zshenvに下記パス設定
 export PATH=~/bin:/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 
-*other tar
+#other tar
 tar -tzvf hogehoge.tar.gz
 -t 内容物表示
 -c create ファイル作成
 -v verbose 詳細表示
 -f デフォルトのテープには入出力しない
->内容物表示
+##内容物表示
 tar -zxcvf hogehoge.tar.gz
 >解凍
 
->ps
+#ps
 ps -ax|grep hogehoge
 
->launch
+#launch
 launchctl list
 imac% sudo launchctl list|grep -e '^\d'|grep mysql
 ロード済み野設定を表示 PID表示は起動済み
-** register
+## register
 $ sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql55-server.plist
-** stop
+## stop
 $ sudo launchctl unload /Library/LaunchDaemons/org.macports.mysql55-server.plist
-** start
+## start
 $ sudo launchctl load /Library/LaunchDaemons/org.macports.mysql55-server.plist
 Daemon と Agent の違い
 
-Daemon
+##Daemon
 OS 起動時に、PID 1 の launched によって起動されるプログラム。
-Agent
+##Agent
 ユーザ権限で起動する launched によって起動されるプログラム。Agent は GUI インターフェースを持つことができるが、Daemon はそれができない。
 launchd.plist ファイルを置くディレクトリ
 
@@ -105,31 +110,33 @@ launchd.plist ファイルを置くディレクトリ
 /System/Library/LaunchDaemons
 launchd.plist の記述例
 
+``xml
 /System/Library/LaunchDaemons/com.apple.periodic-daily.plist
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.apple.periodic-daily</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/usr/sbin/periodic</string>
-        <string>daily</string>
-    </array>
-    <key>LowPriorityIO</key>
-    <true/>
-    <key>Nice</key>
-    <integer>1</integer>
-    <key>StartCalendarInterval</key>
-    <dict>
-        <key>Hour</key>
-        <integer>3</integer>
-        <key>Minute</key>
-        <integer>15</integer>
-    </dict>
-</dict>
-</plist>
+><?xml version="1.0" encoding="UTF-8"?>
+><!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+><plist version="1.0">
+><dict>
+>    <key>Label</key>
+>    <string>com.apple.periodic-daily</string>
+>    <key>ProgramArguments</key>
+>    <array>
+>        <string>/usr/sbin/periodic</string>
+>        <string>daily</string>
+>    </array>
+>    <key>LowPriorityIO</key>
+>    <true/>
+>    <key>Nice</key>
+>    <integer>1</integer>
+>    <key>StartCalendarInterval</key>
+>    <dict>
+>        <key>Hour</key>
+>        <integer>3</integer>
+>        <key>Minute</key>
+>        <integer>15</integer>
+>    </dict>
+></dict>
+></plist>
+``
 man に <key> の詳細が書かれている。man launchd.plist
 テキストエディタで書いてもいいが、launchctl で load する時に propertyList is NULL とかのエラーが出るときがあるので、 Property List Editor.app で作るのが確実。
 Label <string>

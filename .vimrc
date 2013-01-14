@@ -21,7 +21,9 @@ endif
 
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/Shougo/neosnippet.git'
+NeoBundle 'git://github.com/LeafCage/foldCC.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
@@ -31,12 +33,12 @@ NeoBundle 'git://github.com/thinca/vim-guicolorscheme.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'git://github.com/vim-scripts/newspaper.vim.git'
-NeoBundle 'git://github.com/LeafCage/foldCC.git'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 NeoBundle 'git://github.com/jmcantrell/vim-virtualenv.git'
 NeoBundle 'git://github.com/kana/vim-smartchr.git'
 NeoBundle 'git://github.com/mattn/gist-vim.git'
 NeoBundle 'git://github.com/mattn/webapi-vim.git'
+NeoBundle 'git://github.com/tpope/vim-markdown.git'
 
 
 filetype plugin on
@@ -71,7 +73,7 @@ set foldcolumn=4
 "fold chars(fold垂直 fold水平文字の設定)
 set fillchars=vert:\|
 "foldCC.vimを使用したfoldレイアウト変更
-set foldtext=FoldCCtext()
+"set foldtext=FoldCCtext()
 "foldカラー設定
 hi Folded gui=bold term=standout cterm=bold ctermfg=125
                                \ guibg=Grey30 guifg=Grey80
@@ -132,8 +134,7 @@ set noequalalways "分割時はウィンドウにサイズを合わせる
 "キーマップ {{{
 "
 imap <C-j> <ESC>
-""ミスタッチ防止設定
-imap <C-@> <C-[>
+
 "カッコやクオートなどを入力した際に左に自動で移動します
 inoremap {} {}<Left>
 inoremap [] []<Left>
@@ -291,13 +292,13 @@ endfunction
 
 " Unite Window
 nnoremap <silent> [Window]s
-      \ :<C-u>Unite -buffer-name=files
+      \ :<C-u>Unite -vertical -buffer-name=files
       \ buffer_tab file_mru<CR>
 nnoremap <silent> [Window]b
-      \ :<C-u>Unite -buffer-name=files
+      \ :<C-u>Unite -vertical -buffer-name=files
       \ bookmark<CR>
 nnoremap <silent> [Window]f
-      \ :<C-u>Unite -buffer-name=files
+      \ :<C-u>Unite -vertical -buffer-name=files
       \ jump_point file_point file file/new<CR>
 nnoremap [Space]ba
       \ :<C-u>UniteBookmarkAdd<CR>
@@ -336,7 +337,7 @@ nnoremap <silent> [Window]en  :<C-u>new<CR>
 ".vimrc再読み込み簡易化"{{{
 noremap [Space]rv :<C-u>source ~/.vimrc<Return>
 noremap [Space]ev :<C-u>edit ~/.vimrc<Return>
-noremap [Space]er :<C-u>edit ~/readme.txt<Return>
+noremap [Space]er :<C-u>edit ~/readme.md<Return>
 noremap [Space]ez :<C-u>edit ~/.zshrc<Return>
 noremap [Space]et :<C-u>edit ~/.tmux.conf<Return>
 
@@ -381,6 +382,17 @@ function! s:get_cdir_filelist(target_lang)
 endfunction
 "}}}
 
+"quickrun設定"{{{
+let g:quickrun_config = {}
+let g:quickrun_config.markdown = {
+      \ 'outputter' : 'null',
+      \ 'command'   : 'open',
+      \ 'cmdopt'    : '-a',
+      \ 'args'      : 'Marked',
+      \ 'exec'      : '%c %o %a %s',
+      \ }
+"}}}
+
 "python開発環境"{{{
 let g:virtualenv_directory = '~/tests/python/'
 "}}}
@@ -409,6 +421,9 @@ nmap f [unite]
 xmap f [unite]
 
 nnoremap [unite]u       q:Unite<SPACE>
+nnoremap <silent> [unite]o :<C-u>Unite -vertical -winwidth=30 -buffer-name=outline -no-quit outline<CR>
+call unite#set_buffer_name_option('outline', 'ignorecase', 1)
+call unite#set_buffer_name_option('outline', 'smartcase',  1)
 "}}}
 
 " ネオコン設定:"{{{
