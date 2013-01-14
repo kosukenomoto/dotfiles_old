@@ -110,33 +110,33 @@ launchd.plist ファイルを置くディレクトリ
 /System/Library/LaunchDaemons
 launchd.plist の記述例
 
-``xml
+```xml
 /System/Library/LaunchDaemons/com.apple.periodic-daily.plist
-><?xml version="1.0" encoding="UTF-8"?>
-><!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-><plist version="1.0">
-><dict>
->    <key>Label</key>
->    <string>com.apple.periodic-daily</string>
->    <key>ProgramArguments</key>
->    <array>
->        <string>/usr/sbin/periodic</string>
->        <string>daily</string>
->    </array>
->    <key>LowPriorityIO</key>
->    <true/>
->    <key>Nice</key>
->    <integer>1</integer>
->    <key>StartCalendarInterval</key>
->    <dict>
->        <key>Hour</key>
->        <integer>3</integer>
->        <key>Minute</key>
->        <integer>15</integer>
->    </dict>
-></dict>
-></plist>
-``
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.apple.periodic-daily</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/sbin/periodic</string>
+        <string>daily</string>
+    </array>
+    <key>LowPriorityIO</key>
+    <true/>
+    <key>Nice</key>
+    <integer>1</integer>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>3</integer>
+        <key>Minute</key>
+        <integer>15</integer>
+    </dict>
+</dict>
+</plist>
+```
 man に <key> の詳細が書かれている。man launchd.plist
 テキストエディタで書いてもいいが、launchctl で load する時に propertyList is NULL とかのエラーが出るときがあるので、 Property List Editor.app で作るのが確実。
 Label <string>
