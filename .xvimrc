@@ -1,0 +1,16 @@
+set ignorecase
+set smartcase
+set incsearch
+set guioptions=r
+
+imap <C-j> <ESC>
+
+nmap <SPACE>w :w<CR><ESC>
+
+nnoremap eo o<Space><BS><ESC>
+nnoremap eO O<Space><BS><ESC>
+
+nmap n nzz
+nmap N Nzz
+vmap n nzz
+vmap N Nzz

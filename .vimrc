@@ -104,6 +104,10 @@ set softtabstop=4
 set cursorline
 "自動インデント
 set autoindent
+"検索文字大小文字区別なしの設定
+set ignorecase
+"検索文字大文字含む時のみ大小区別設定
+set smartcase
 "Cインデント
 set nocindent
 "検索結果をハイライト
