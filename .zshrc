@@ -5,7 +5,6 @@ if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
         . /opt/local/etc/profile.d/autojump.sh
 fi
 
-
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'

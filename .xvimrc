@@ -6,6 +6,19 @@ set guioptions=r
 imap <C-j> <ESC>
 
 nmap <SPACE>w :w<CR><ESC>
+nmap <SPACE>r :run<CR><ESC>
+nmap <SPACE>m :make<CR><ESC>
+
+nmap <C-n> :xccmd jumpToNextCounterpart<CR>
+
+nmap <C-h> :xccmd foldAllMethods<CR>
+nmap <C-l> :xccmd unfoldAll<CR>
+
+nmap <C-c> :xccmd commentAndUncommentCurrentLines<CR><ESC>
+vmap <C-c> :xccmd commentAndUncommentCurrentLines<CR><ESC>
+
+nmap s :xccmd indentSelection<CR><ESC>
+vmap s :xccmd indentSelection<CR><ESC>
 
 nnoremap eo o<Space><BS><ESC>
 nnoremap eO O<Space><BS><ESC>

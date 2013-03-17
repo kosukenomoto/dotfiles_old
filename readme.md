@@ -318,3 +318,16 @@ vimの$PATHはSHELL の$PATHとは別物だけど、起動時にSHELLの$PATHか
 vimの$PATHはSHELL の$PATHとはべつものとおもいきや、
 $PATHへの変更は反映される。 
 
+
+
+
+
+#CentOS6.4
+##sshd pubkey の登録
+dropboxのmacbook_kn.pubを下記にてCentOSのユーザーに登録
+
+$cat macbook_kn.pub >> authorized_keys
+
+キーの作成
+$ssh-keygen -t rsa
+
