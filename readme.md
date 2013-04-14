@@ -318,10 +318,6 @@ vimの$PATHはSHELL の$PATHとは別物だけど、起動時にSHELLの$PATHか
 vimの$PATHはSHELL の$PATHとはべつものとおもいきや、
 $PATHへの変更は反映される。 
 
-
-
-
-
 #CentOS6.4
 ##sshd pubkey の登録
 dropboxのmacbook_kn.pubを下記にてCentOSのユーザーに登録
@@ -331,3 +327,15 @@ $cat macbook_kn.pub >> authorized_keys
 キーの作成
 $ssh-keygen -t rsa
 
+#Vagrant
+ディレクトリ構成三つ
+1.vagrand用boxesファイル等格納される
+#.vagrant.d
+##boxes
+2.viurtualbox用ファイルディスクイメージなど
+#Viurtual VM
+##vmdk
+3.vagrant用設定ファイル（仮想端末毎に）
+vagrantコマンドは個々で有効
+#vm1
+##Vagrantfile
