@@ -1,5 +1,5 @@
 #!/opt/local/bin/zsh
-source ~/.zsh/zsh-git-prompt/zshrc.sh
+source ~/.zsh/git-prompt/zshrc.sh
 export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
