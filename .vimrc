@@ -31,6 +31,7 @@ NeoBundle 'git://github.com/vim-scripts/Smooth-Scroll.git'
 NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'git://github.com/scrooloose/nerdcommenter.git'
 NeoBundle 'git://github.com/tomasr/molokai.git'
+NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'git://github.com/jmcantrell/vim-virtualenv.git'
 NeoBundle 'git://github.com/kana/vim-smartchr.git'
 NeoBundle 'git://github.com/mattn/gist-vim.git'
@@ -55,9 +56,10 @@ set directory=~/.vim
 
 "カラースキーマの設定"{{{
 syntax enable
-"colorscheme solarized
-colorscheme molokai
-set background=light
+set background=dark
+colorscheme solarized
+"colorscheme molokai
+let g:Powerline_symbols = 'fancy'
 "}}}
 
 "fold設定"{{{
@@ -143,10 +145,15 @@ let g:virtualenv_directory = '~/tests/python/'
 "}}}
 
 " Keymap Base {{{
-imap <C-j> <ESC>
+inoremap <silent> <C-j> <ESC>
+nnoremap <silent> <C-j> <ESC>
+"nmap <C-j> <ESC>
+"xmap <C-j> <ESC>
+"imap <C-j> <ESC>
 
 "検索時のハイライト解除
 nmap <silent><ESC><ESC> :noh<CR><ESC>
+nmap <silent><C-j><C-j> :noh<CR><ESC>
 
 " 検索後画面の中心に。
 nnoremap n nzz

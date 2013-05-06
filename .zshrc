@@ -1,9 +1,7 @@
 #!/opt/local/bin/zsh
 source ~/.zsh/zsh-git-prompt/zshrc.sh
 export FPATH="$FPATH:/opt/local/share/zsh/site-functions/"
-if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-        . /opt/local/etc/profile.d/autojump.sh
-fi
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 export LANG=ja_JP.UTF-8
 export CLICOLOR=1
@@ -104,3 +102,4 @@ bindkey '\^' cdup
 
 function p33 { source ~/tests/python/env3.3/bin/activate }
 function p27 { source ~/tests/python/env2.7/bin/activate }
+
